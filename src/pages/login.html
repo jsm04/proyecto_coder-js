@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/custom.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<header>
+			<!-- navbar -->
+
+			<nav class="navbar navbar-expand-lg navbar-light bg-light p-3">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="../index.html">Turnera</a>
+					<button
+						class="navbar-toggler"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="../index.html"
+									>Home</a
+								>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" href="./tu-turno.html">Tu turno</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" href="./login.html">Login</a>
+							</li>
+						</ul>
+						<form class="d-flex">
+							<input
+								class="form-control me-2"
+								type="search"
+								placeholder="Search"
+								aria-label="Search"
+							/>
+							<button class="btn btn-outline-primary" type="submit">Search</button>
+						</form>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<main>
+			<h2 class="display-2 text-center mt-5 p-4">Ingresa a tu cuenta</h2>
+			<div class="center-login">
+				<!-- login -->
+				<form class="m-5 mt-0 p-5">
+					<div class="mb-3">
+						<label for="inputEmailLogin" class="form-label display-5"
+							>Email address</label
+						>
+						<input
+							type="email"
+							class="form-control"
+							id="inputEmailLogin"
+							oninput="validateEmail()"
+							aria-describedby="emailHelp"
+						/>
+						<div id="emailHelp" class="form-text">
+							We'll never share your email with anyone else.
+						</div>
+					</div>
+					<div class="mb-3">
+						<label for="InputPassword1" class="form-label display-5"
+							>Password</label
+						>
+						<input
+							type="password"
+							class="form-control"
+              oninput="validatePassword()"
+							id="InputPassword1"
+						/>
+					</div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+		</main>
+		<script src="../lib/bootstrap.bundle.min.js"></script>
+		<script src="../app.js"></script>
+	</body>
+</html>
