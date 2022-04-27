@@ -172,10 +172,10 @@ function enableSubmit() {
 	}
 }
 
-// form prevent default
+// form entrega la data como json, prevent default y reload windows after submit
 
 const registerForm = document.getElementById('registerForm');
-// const registerForm = document.querySelector('form');
+
 registerForm.addEventListener('submit', function (event) {
 	event.preventDefault();
 	const data = new FormData(event.target);
