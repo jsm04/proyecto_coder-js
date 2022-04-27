@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<link rel="stylesheet" href="../css/custom.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<header>
+			<!-- navbar -->
+
+			<nav class="navbar navbar-expand-lg navbar-light bg-light p-3">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="../index.html">Turnera</a>
+					<button
+						class="navbar-toggler"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div
+						class="collapse navbar-collapse"
+						id="navbarSupportedContent"
+					>
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item">
+								<a
+									class="nav-link active"
+									aria-current="page"
+									href="../index.html"
+									>Home</a
+								>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" href="./tu-turno.html"
+									>Tu turno</a
+								>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" href="./login.html"
+									>Login</a
+								>
+							</li>
+						</ul>
+						<form class="d-flex">
+							<input
+								class="form-control me-2"
+								type="search"
+								placeholder="Search"
+								aria-label="Search"
+							/>
+							<button class="btn btn-outline-primary" type="submit">
+								Search
+							</button>
+						</form>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<main>
+			<h2 class="display-2 text-center mt-5 p-4">Registro</h2>
+			<div class="center-login">
+				<!-- login -->
+				<form id="registerForm" class="row g-3">
+					<div class="col-md-4">
+						<label for="registrationName" class="form-label"
+							>Nombre</label
+						>
+						<input
+							type="text"
+							class="form-control is-invalid text-capitalize"
+							id="registrationName"
+							name="name"
+							required
+						/>
+						<div class="valid-feedback">Looks good!</div>
+					</div>
+					<div class="col-md-3">
+						<label for="registrationLastname" class="form-label"
+							>Apellido</label
+						>
+						<input
+							type="text"
+							class="form-control is-invalid text-capitalize"
+							id="registrationLastname"
+							name="lastname"
+							required
+						/>
+						<div class="valid-feedback">Looks good!</div>
+					</div>
+					<div class="col-md-5">
+						<label for="registrationEmail" class="form-label"
+							>Email</label
+						>
+						<div class="input-group has-validation">
+							<span class="input-group-text" id="inputGroupPrepend3"
+								>@</span
+							>
+							<input
+								type="text"
+								class="form-control is-invalid"
+								id="registrationEmail"
+								aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
+								name="email"
+								required
+							/>
+							<div
+								id="validationServerUsernameFeedback"
+								class="invalid-feedback"
+							>
+								Por favor suministre una direccion de email.
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label for="registerCity" class="form-label"
+							>Ciudad</label
+						>
+						<input
+							type="text"
+							class="form-control is-invalid"
+							id="registerCity"
+							name="city"
+							aria-describedby="registerCity03Feedback"
+							required
+						/>
+						<div id="registerCity03Feedback" class="invalid-feedback">
+							Por favor provea una ciudad valida.
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label for="registrationCountry" class="form-label"
+							>Pais</label
+						>
+						<select
+							class="form-select is-invalid"
+							id="registrationCountry"
+							aria-describedby="registrationCountryFeedback"
+							required
+						>
+							<option selected disabled value="disabled">...</option>
+							<option>Argentina</option>
+							<option>Brasil</option>
+							<option>Chile</option>
+							<option>Uruguay</option>
+						</select>
+						<div
+							id="registrationCountryFeedback"
+							class="invalid-feedback"
+						>
+							Por favor elija un pais valido.
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label for="registerUsername" class="form-label"
+							>Nombre de Usuario</label
+						>
+						<input
+							type="text"
+							class="form-control is-invalid"
+							id="registerUsername"
+							name="username"
+							aria-describedby="registerUsernameFeedback"
+							required
+						/>
+						<div
+							id="registerUsernameFeedback"
+							class="invalid-feedback"
+						>
+							El usuario no debe contener signos de puntuación.
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label for="registrationPassword" class="form-label"
+							>Contraseña</label
+						>
+						<input
+							type="password"
+							class="form-control is-invalid"
+							id="registrationPassword"
+							name="password"
+							aria-describedby="registrationPasswordFeedback"
+							required
+						/>
+						<div
+							id="registrationPasswordFeedback"
+							class="invalid-feedback"
+						>
+							Por favor rellene este campo.
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="form-check">
+							<input
+								class="form-check-input is-invalid"
+								type="checkbox"
+								id="terms"
+								aria-describedby="termsFeedback"
+								required
+							/>
+							<label class="form-check-label" for="terms">
+								Estoy de acuerdo con los terminos y condiciones
+							</label>
+							<div id="terms" class="invalid-feedback">
+								Debe aceptar antes de completar el registro.
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+						<button
+							class="btn btn-primary mt-4 disabled"
+							type="submit"
+							id="registerSubmit"
+						>
+							Submit form
+						</button>
+					</div>
+				</form>
+			</div>
+		</main>
+		<script src="../lib/bootstrap.bundle.min.js"></script>
+		<script src="../app.js"></script>
+		<script src="../js/registro.js"></script>
+	</body>
+</html>
