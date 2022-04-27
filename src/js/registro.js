@@ -186,7 +186,6 @@ registerForm.addEventListener('submit', function (event) {
 	const username = data.get('username');
 	const password = data.get('password');
 	console.log(data, name, lastname, email, city, username, password);
-	registerForm.reset();
 	alert(`Congrats, ${name}!, su registro fue satisfactorio.`);
+	window.location.reload();
 });
-
