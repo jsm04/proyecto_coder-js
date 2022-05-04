@@ -112,9 +112,7 @@ function validatePassword() {
 function validateUsername() {
 	const input = document.getElementById('registerUsername');
 	// minimo 8 caracteres, una letra y un numero
-	let regex =
-		/^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/i;
-
+	let regex = /^[A-Za-z][A-Za-z0-9_]{7,29}$/;
 	if (input.value.match(regex)) {
 		input.classList.add('is-valid');
 		input.classList.remove('is-invalid');
@@ -124,7 +122,7 @@ function validateUsername() {
 	}
 }
 
-// validate Username
+// validate Terms
 function validateTerms() {
 	const input = document.getElementById('terms');
 	if (this.checked) {
@@ -172,20 +170,24 @@ function enableSubmit() {
 	}
 }
 
-// form entrega la data como json, prevent default y reload windows after submit
-
+// form guarda la informacion de registro en el ls, prevent default y reload windows after submit
 const registerForm = document.getElementById('registerForm');
 
 registerForm.addEventListener('submit', function (event) {
 	event.preventDefault();
-	const data = new FormData(event.target);
-	const name = data.get('name');
-	const lastname = data.get('lastname');
-	const email = data.get('email');
-	const city = data.get('city');
-	const username = data.get('username');
-	const password = data.get('password');
-	console.log(data, name, lastname, email, city, username, password);
-	alert(`Congrats, ${name}!, su registro fue satisfactorio.`);
+	let data = new FormData(event.target);
+	let username = data.get('username');
+	let password = data.get('password');
+	let name = data.get('name');
+	let lastname = data.get('lastname');
+	let email = data.get('email');
+	let city = data.get('city');
+	const USER_INFO = [];
+	USER_INFO.push({ username, password, name, lastname, email, city });
+	const ls = (k, v) => {
+		localStorage.setItem(k, v);
+	};
+	ls('resgisterData', JSON.stringify(USER_INFO));
+	alert(`Felicitaciones, ${username}!, registro satisfactorio.`);
 	window.location.reload();
 });

@@ -26,19 +26,19 @@ function validateEmail() {
 
 // password validation
 // eslint-disable-next-line no-unused-vars
-function validatePassword() {
-	const input = document.getElementById('InputPassword1');
-	// minimo 8 caracteres, una letra y un numero
-	let regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+// function validatePassword() {
+// 	const input = document.getElementById('InputPassword1');
+// 	// minimo 8 caracteres, una letra y un numero
+// 	let regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
-	if (input.value == '') {
-		input.classList.remove('is-valid');
-		input.classList.remove('is-invalid');
-	} else if (input.value.match(regex)) {
-		input.classList.add('is-valid');
-		input.classList.remove('is-invalid');
-	} else {
-		input.classList.remove('is-valid');
-		input.classList.add('is-invalid');
-	}
-}
+// 	if (input.value == '') {
+// 		input.classList.remove('is-valid');
+// 		input.classList.remove('is-invalid');
+// 	} else if (input.value.match(regex)) {
+// 		input.classList.add('is-valid');
+// 		input.classList.remove('is-invalid');
+// 	} else {
+// 		input.classList.remove('is-valid');
+// 		input.classList.add('is-invalid');
+// 	}
+// }
