@@ -1,73 +1,43 @@
 // Validate Name Registration
 const inputRegisterName = document.getElementById('registrationName');
-inputRegisterName.addEventListener('input', validateName);
+
+inputRegisterName.addEventListener('input', function () {
+	let input = document.getElementById('registrationName');
+	let regex = /^[a-z ,.'-]+$/i;
+
+	if (input.value.match(regex)) {
+		input.classList.add('is-valid');
+		input.classList.remove('is-invalid');
+	} else {
+		input.classList.remove('is-valid');
+		input.classList.add('is-invalid');
+	}
+});
 
 // Validate LastName Registration
 const inputRegisterLastname = document.getElementById(
 	'registrationLastname'
 );
-inputRegisterLastname.addEventListener('input', validateLastname);
+
+inputRegisterLastname.addEventListener('input', function () {
+	let input = document.getElementById('registrationLastname');
+	let regex = /^[a-z ,.'-]+$/i;
+
+	if (input.value.match(regex)) {
+		input.classList.add('is-valid');
+		input.classList.remove('is-invalid');
+	} else {
+		input.classList.remove('is-valid');
+		input.classList.add('is-invalid');
+	}
+});
 
 // Validate Email Registration
 const inputRegisterEmail = document.getElementById(
 	'registrationEmail'
 );
-inputRegisterEmail.addEventListener('input', validateEmail);
 
-// Validate Country Registration
-const inputRegisterCountry = document.getElementById(
-	'registrationCountry'
-);
-inputRegisterCountry.addEventListener('input', validateCountry);
-
-// Validate Password Registration
-const inputRegisterPassword = document.getElementById(
-	'registrationPassword'
-);
-inputRegisterPassword.addEventListener('input', validatePassword);
-
-// Validate Password Registration
-const inputRegisterUsername = document.getElementById(
-	'registerUsername'
-);
-inputRegisterUsername.addEventListener('input', validateUsername);
-
-// Validate Terms Registration
-const inputRegisterTerms = document.getElementById('terms');
-inputRegisterTerms.addEventListener('input', validateTerms);
-
-//* functions
-
-// name validation
-function validateName() {
-	const input = document.getElementById('registrationName');
-	let regex = /^[a-z ,.'-]+$/i;
-
-	if (input.value.match(regex)) {
-		input.classList.add('is-valid');
-		input.classList.remove('is-invalid');
-	} else {
-		input.classList.remove('is-valid');
-		input.classList.add('is-invalid');
-	}
-}
-
-// Lastname validation
-function validateLastname() {
-	const input = document.getElementById('registrationLastname');
-	let regex = /^[a-z ,.'-]+$/i;
-
-	if (input.value.match(regex)) {
-		input.classList.add('is-valid');
-		input.classList.remove('is-invalid');
-	} else {
-		input.classList.remove('is-valid');
-		input.classList.add('is-invalid');
-	}
-}
-
-// Email validation
-function validateEmail() {
+inputRegisterEmail.addEventListener('input', function () {
 	const input = document.getElementById('registrationEmail');
 	let regex =
 		/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -79,10 +49,14 @@ function validateEmail() {
 		input.classList.remove('is-valid');
 		input.classList.add('is-invalid');
 	}
-}
+});
 
-// Country validation
-function validateCountry() {
+// Validate Country Registration
+const inputRegisterCountry = document.getElementById(
+	'registrationCountry'
+);
+
+inputRegisterCountry.addEventListener('input', function () {
 	const input = document.getElementById('registrationCountry');
 	if (input.value === 'disabled') {
 		input.classList.remove('is-valid');
@@ -91,10 +65,13 @@ function validateCountry() {
 		input.classList.add('is-valid');
 		input.classList.remove('is-invalid');
 	}
-}
+});
 
-// validate password
-function validatePassword() {
+// Validate Password Registration
+const inputRegisterPassword = document.getElementById(
+	'registrationPassword'
+);
+inputRegisterPassword.addEventListener('input', function () {
 	const input = document.getElementById('registrationPassword');
 	// minimo 8 caracteres, una letra y un numero
 	let regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
@@ -106,10 +83,13 @@ function validatePassword() {
 		input.classList.remove('is-valid');
 		input.classList.add('is-invalid');
 	}
-}
+});
 
-// validate Username
-function validateUsername() {
+// Validate Password Registration
+const inputRegisterUsername = document.getElementById(
+	'registerUsername'
+);
+inputRegisterUsername.addEventListener('input', function () {
 	const input = document.getElementById('registerUsername');
 	// minimo 8 caracteres, una letra y un numero
 	let regex = /^[A-Za-z][A-Za-z0-9_]{7,29}$/;
@@ -120,10 +100,11 @@ function validateUsername() {
 		input.classList.remove('is-valid');
 		input.classList.add('is-invalid');
 	}
-}
+});
 
-// validate Terms
-function validateTerms() {
+// Validate Terms Registration
+const inputRegisterTerms = document.getElementById('terms');
+inputRegisterTerms.addEventListener('input', function () {
 	const input = document.getElementById('terms');
 	if (this.checked) {
 		input.classList.add('is-valid');
@@ -132,11 +113,9 @@ function validateTerms() {
 		input.classList.remove('is-valid');
 		input.classList.add('is-invalid');
 	}
-}
+});
 
-// Se agrega la clase valido o no valido segun si la ciudad se encuentra en la lista
 const inputCity = document.getElementById('registerCity');
-inputCity.addEventListener('input', validateAvailableCities);
 
 // array de ciudades validas para el input ciudades
 const validCities = [
@@ -146,35 +125,36 @@ const validCities = [
 	'Brasilia',
 ];
 
-// loop que busca si la ciudad es valida o no
-function validateAvailableCities() {
+// loop que busca si la ciudad esta disponible
+inputCity.addEventListener('input', function () {
 	for (let cities of validCities) {
 		if (inputCity.value === cities) {
 			inputCity.classList.add('is-valid');
 			inputCity.classList.remove('is-invalid');
 		}
 	}
-}
+});
 
 // Desactiva el boton de submit si no esta el checked de terminos y condiciones
 const registerSubmitButton =
 	document.getElementById('registerSubmit');
 
-document.addEventListener('change', enableSubmit);
-
-function enableSubmit() {
+document.addEventListener('change', function () {
 	if (document.getElementById('terms').checked) {
 		registerSubmitButton.classList.remove('disabled');
 	} else {
 		registerSubmitButton.classList.add('disabled');
 	}
-}
+});
 
-// form guarda la informacion de registro en el ls, prevent default y reload windows after submit
+// Form element
 const registerForm = document.getElementById('registerForm');
+// Array donde se guardan los datos del registro
+const modalText = document.getElementById('modalText');
 
 registerForm.addEventListener('submit', function (event) {
 	event.preventDefault();
+
 	let data = new FormData(event.target);
 	let username = data.get('username');
 	let password = data.get('password');
@@ -182,12 +162,29 @@ registerForm.addEventListener('submit', function (event) {
 	let lastname = data.get('lastname');
 	let email = data.get('email');
 	let city = data.get('city');
-	const USER_INFO = [];
-	USER_INFO.push({ username, password, name, lastname, email, city });
-	const ls = (k, v) => {
-		localStorage.setItem(k, v);
-	};
-	ls('resgisterData', JSON.stringify(USER_INFO));
-	alert(`Felicitaciones, ${username}!, registro satisfactorio.`);
-	window.location.reload();
+
+	const userInfo = [];
+	
+	userInfo.push({ username, password, name, lastname, email, city });
+
+	window.localStorage.setItem('usersData', JSON.stringify(userInfo));
+
+	// Notificacion del modal popup
+	let registrationSuccessfulMessage = `Felicitaciones ${username} su registro fue satisfactorio. \n \n Aguarde y sera redireccionado.`;
+	modalText.innerText = registrationSuccessfulMessage;
+
+	// Busqueda de items con la clase valido en el form
+	const validItemsClassSelect =
+		registerForm.querySelectorAll('.is-valid');
+	//If true se le remueve la clase => se reincia el form
+	validItemsClassSelect.forEach(function (item) {
+		item.classList.remove('is-valid');
+	});
+
+	// Reset form values
+	registerForm.reset();
+
+	// Submit button reset
+	registerSubmitButton.classList.add('disabled');
+	setTimeout("location.href = '../pages/login.html';", 3500);
 });

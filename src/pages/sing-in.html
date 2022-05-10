@@ -73,7 +73,7 @@
 						>
 						<input
 							type="text"
-							class="form-control is-invalid text-capitalize"
+							class="form-control text-capitalize"
 							id="registrationName"
 							name="name"
 							required
@@ -86,7 +86,7 @@
 						>
 						<input
 							type="text"
-							class="form-control is-invalid text-capitalize"
+							class="form-control text-capitalize"
 							id="registrationLastname"
 							name="lastname"
 							required
@@ -103,7 +103,7 @@
 							>
 							<input
 								type="text"
-								class="form-control is-invalid"
+								class="form-control"
 								id="registrationEmail"
 								aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
 								name="email"
@@ -118,27 +118,11 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="registerCity" class="form-label"
-							>Ciudad</label
-						>
-						<input
-							type="text"
-							class="form-control is-invalid"
-							id="registerCity"
-							name="city"
-							aria-describedby="registerCity03Feedback"
-							required
-						/>
-						<div id="registerCity03Feedback" class="invalid-feedback">
-							Por favor provea una ciudad valida.
-						</div>
-					</div>
-					<div class="col-md-6">
 						<label for="registrationCountry" class="form-label"
 							>Pais</label
 						>
 						<select
-							class="form-select is-invalid"
+							class="form-select"
 							id="registrationCountry"
 							aria-describedby="registrationCountryFeedback"
 							required
@@ -157,12 +141,29 @@
 						</div>
 					</div>
 					<div class="col-md-6">
+						<label for="registerCity" class="form-label"
+							>Ciudad</label
+						>
+						<input
+							type="text"
+							class="form-control"
+							id="registerCity"
+							name="city"
+							aria-describedby="registerCity03Feedback"
+							required
+						/>
+						<div id="registerCity03Feedback" class="invalid-feedback">
+							Por favor provea una ciudad valida.
+						</div>
+					</div>
+
+					<div class="col-md-6">
 						<label for="registerUsername" class="form-label"
 							>Nombre de Usuario</label
 						>
 						<input
 							type="text"
-							class="form-control is-invalid"
+							class="form-control"
 							id="registerUsername"
 							name="username"
 							aria-describedby="registerUsernameFeedback"
@@ -181,7 +182,7 @@
 						>
 						<input
 							type="password"
-							class="form-control is-invalid"
+							class="form-control"
 							id="registrationPassword"
 							name="password"
 							aria-describedby="registrationPasswordFeedback"
@@ -197,7 +198,7 @@
 					<div class="col-12">
 						<div class="form-check">
 							<input
-								class="form-check-input is-invalid"
+								class="form-check-input"
 								type="checkbox"
 								id="terms"
 								aria-describedby="termsFeedback"
@@ -213,14 +214,54 @@
 					</div>
 					<div class="col-12">
 						<button
-							class="btn btn-primary mt-4 disabled"
+							class="btn btn-secondary mt-4 disabled"
 							type="submit"
 							id="registerSubmit"
+							data-bs-toggle="modal"
+							data-bs-target="#registrationModal"
 						>
-							Submit form
+							Submit
 						</button>
 					</div>
 				</form>
+
+				<!-- modal -->
+				<div id="registrationModal" class="modal fade" tabindex="-1">
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">
+									Informacion sobre el registro
+								</h5>
+								<button
+									type="button"
+									class="btn-close"
+									data-bs-dismiss="modal"
+									aria-label="Close"
+								></button>
+							</div>
+							<div class="modal-body">
+								<p class="text-center" id="modalText">
+									${registrationSuccessfulMessage}
+								</p>
+								<div class="d-flex justify-content-center">
+									<div class="spinner-border" role="status">
+										<span class="visually-hidden">Loading...</span>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button
+									type="button"
+									class="btn btn-secondary"
+									data-bs-dismiss="modal"
+								>
+									Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</main>
 		<script src="../lib/bootstrap.bundle.min.js"></script>
