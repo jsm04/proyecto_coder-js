@@ -14,7 +14,9 @@
 		<header>
 			<!-- navbar -->
 
-			<nav class="navbar navbar-expand-lg navbar-light bg-light p-3">
+			<nav
+				class="navbar navbar-expand-lg navbar-light bg-light p-3 m-1"
+			>
 				<div class="container-fluid">
 					<a class="navbar-brand" href="../index.html">Webpage</a>
 					<button
@@ -41,6 +43,14 @@
 									>Home</a
 								>
 							</li>
+							<li class="nav-item">
+								<a
+									class="nav-link active"
+									aria-current="page"
+									href="./functionality.html"
+									>Functionality</a
+								>
+							</li>
 						</ul>
 						<ul
 							class="navbar-nav d-flex bg-secondary fw-bolder rounded px-2"
@@ -63,7 +73,7 @@
 			</h2>
 			<div class="center-login">
 				<!-- login -->
-				<form class="m-5 mt-0 p-5">
+				<form id="loginForm" class="m-5 mt-0 p-5">
 					<div class="mb-3">
 						<label for="inputEmailLogin" class="form-label display-5"
 							>Email address</label
@@ -87,7 +97,7 @@
 							placeholder="Enter your password"
 							type="password"
 							class="form-control"
-							id="InputPassword1"
+							id="inputPassword"
 						/>
 					</div>
 					<button type="submit " class="w-100 btn btn-lg btn-primary">
@@ -102,8 +112,48 @@
 					>
 				</form>
 			</div>
+			<!-- modal -->
+			<div id="loginModal" class="modal" tabindex="-1">
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Ingreso</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div class="modal-body">
+							<p id="modalText" class="text-center display-6"></p>
+							<div class="d-flex justify-content-center">
+								<div class="spinner-grow" role="status">
+									<span class="visually-hidden">Loading...</span>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-secondary"
+								data-bs-dismiss="modal"
+							>
+								Close
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</main>
 		<script src="../lib/bootstrap.bundle.min.js"></script>
+		<script
+			defer
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+			integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
 		<script src="../app.js"></script>
 		<script src="../js/login.js"></script>
 	</body>

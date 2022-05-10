@@ -7049,7 +7049,7 @@ textarea.form-control-lg {
   margin: 0.25rem !important;
 }
 
-.m-2 {
+.m-2, .calendar .calendar-ol li {
   margin: 0.5rem !important;
 }
 
@@ -11126,6 +11126,26 @@ textarea.form-control-lg {
 .center-login {
   max-width: 50%;
   margin: 0 auto;
+}
+
+.calendar .calendar-title {
+  text-align: center;
+}
+.calendar .calendar-ol {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+.calendar .calendar-ol li {
+  text-align: center;
+}
+.calendar .calendar-ol .first-num {
+  grid-column-start: 5;
+}
+.calendar .calendar-ol .num:hover {
+  background-color: hsl(225deg, 37%, 45%);
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=custom.css.map */

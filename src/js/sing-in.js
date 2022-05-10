@@ -190,6 +190,10 @@ registerForm.addEventListener('submit', function (event) {
 	let registrationSuccessfulMessage = `Felicitaciones ${username} su registro fue satisfactorio. \n \n Aguarde y sera redireccionado.`;
 	modalText.innerText = registrationSuccessfulMessage;
 
+	// jquerry for toggling modal
+	// eslint-disable-next-line no-undef
+	$('#registrationModal').modal('toggle');
+
 	// Busqueda de items con la clase valido en el form
 	const validItemsClassSelect =
 		registerForm.querySelectorAll('.is-valid');

@@ -16,7 +16,28 @@ $secondary: $earth-blue;
 	margin: 0 auto;
 }
 
-// .contador {
-// 	width: 100%;
-// 	margin: 0 auto;
-// }
+// calendar
+
+.calendar {
+	.calendar-title {
+		text-align: center;
+	}
+	.calendar-ol {
+		list-style-type: none;
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		li {
+			@extend .m-2;
+			text-align: center;
+		}
+
+		.first-num {
+			grid-column-start: 5;
+		}
+		.num:hover {
+			background-color: $secondary;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+	}
+}
