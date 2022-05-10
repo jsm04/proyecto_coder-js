@@ -147,15 +147,27 @@ document.addEventListener('change', function () {
 	}
 });
 
+const modalText = document.getElementById('modalText');
+
+class User {
+	constructor(username, password, name, lastname, email, city) {
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.lastname = lastname;
+		this.email = email;
+		this.city = city;
+	}
+}
+
 // Form element
 const registerForm = document.getElementById('registerForm');
-// Array donde se guardan los datos del registro
-const modalText = document.getElementById('modalText');
 
 registerForm.addEventListener('submit', function (event) {
 	event.preventDefault();
+	// form data API
+	const data = new FormData(event.target);
 
-	let data = new FormData(event.target);
 	let username = data.get('username');
 	let password = data.get('password');
 	let name = data.get('name');
@@ -163,11 +175,16 @@ registerForm.addEventListener('submit', function (event) {
 	let email = data.get('email');
 	let city = data.get('city');
 
-	const userInfo = [];
-	
-	userInfo.push({ username, password, name, lastname, email, city });
+	const newUser = new User(
+		username,
+		password,
+		name,
+		lastname,
+		email,
+		city
+	);
 
-	window.localStorage.setItem('usersData', JSON.stringify(userInfo));
+	window.localStorage.setItem('usersInfo', JSON.stringify(newUser));
 
 	// Notificacion del modal popup
 	let registrationSuccessfulMessage = `Felicitaciones ${username} su registro fue satisfactorio. \n \n Aguarde y sera redireccionado.`;
