@@ -7049,7 +7049,7 @@ textarea.form-control-lg {
   margin: 0.25rem !important;
 }
 
-.m-2, .calendar .calendar-ol li {
+.m-2 {
   margin: 0.5rem !important;
 }
 
@@ -7263,7 +7263,7 @@ textarea.form-control-lg {
   padding: 0.5rem !important;
 }
 
-.p-3 {
+.p-3, .calendar .calendar-ol li {
   padding: 1rem !important;
 }
 
@@ -7447,7 +7447,7 @@ textarea.form-control-lg {
   font-size: calc(1.3rem + 0.6vw) !important;
 }
 
-.fs-4 {
+.fs-4, .calendar .day {
   font-size: calc(1.275rem + 0.3vw) !important;
 }
 
@@ -11073,7 +11073,7 @@ textarea.form-control-lg {
     font-size: 1.75rem !important;
   }
 
-  .fs-4 {
+  .fs-4, .calendar .day {
     font-size: 1.5rem !important;
   }
 }
@@ -11128,19 +11128,27 @@ textarea.form-control-lg {
   margin: 0 auto;
 }
 
+.calendar {
+  margin: auto;
+}
 .calendar .calendar-title {
   text-align: center;
 }
+.calendar .day:nth-child(2n) {
+  background-color: rgba(138, 138, 138, 0.318);
+}
 .calendar .calendar-ol {
+  text-transform: capitalize;
   list-style-type: none;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
 }
+.calendar .calendar-ol :nth-child(8) {
+  grid-column-start: 5;
+}
 .calendar .calendar-ol li {
   text-align: center;
-}
-.calendar .calendar-ol .first-num {
-  grid-column-start: 5;
+  border-radius: 10px;
 }
 .calendar .calendar-ol .num:hover {
   background-color: hsl(225deg, 37%, 45%);
