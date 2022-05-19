@@ -149,8 +149,7 @@ document.addEventListener('change', function () {
 
 const modalText = document.getElementById('modalText');
 
-class User {
-	constructor(username, password, name, lastname, email, city) {
+class User { (username, password, name, lastname, email, city) {
 		this.username = username;
 		this.password = password;
 		this.name = name;
