@@ -1,3 +1,22 @@
+// import { faker } from '@faker-js/faker';
+
+$(document).ready(function () {
+	// jQuery methods go here...
+	$('body').vegas({
+		slides: [
+			{
+				src: 'https://picsum.photos/id/125/1200/700?blur=6',
+			},
+			{
+				src: 'https://picsum.photos/id/126/1200/700?blur=7',
+			},
+			{
+				src: 'https://picsum.photos/id/171/1200/700?blur=7',
+			},
+		],
+	});
+});
+
 // Validate Name Registration
 const inputRegisterName = document.getElementById('registrationName');
 
@@ -131,7 +150,15 @@ inputCity.addEventListener('input', function () {
 		if (inputCity.value === cities) {
 			inputCity.classList.add('is-valid');
 			inputCity.classList.remove('is-invalid');
+			break;
+		} else {
+			inputCity.classList.add('is-invalid');
+			inputCity.classList.remove('is-valid');
 		}
+	}
+	if (inputCity.value === '') {
+		inputCity.classList.remove('is-invalid');
+		inputCity.classList.remove('is-valid');
 	}
 });
 
@@ -160,52 +187,69 @@ class User {
 	}
 }
 
+const usersInfo = [];
+
+// faker js
+// const randomUsername = faker.internet.userName();
+// const randomPassword = faker.random.alphaNumeric(7);
+// const randomName = faker.name.findName();
+// const randomLastname = faker.name.lastName();
+// const randomEmail = faker.internet.email();
+// const randomCity = faker.address.city();
+
+// const generateRandomUsers = (userQuantity) => {
+// 	let result = [];
+// 	for (let i = 0; i < userQuantity; i++) {
+// 		let randomUser = new User();
+// 		randomUser.username = randomUsername;
+// 		randomUser.password = randomPassword;
+// 		randomUser.name = randomName;
+// 		randomUser.lastname = randomLastname;
+// 		randomUser.email = randomEmail;
+// 		randomUser.city = randomCity;
+// 		result.push(randomUser);
+// 	}
+// 	return usersInfo.concat(result);
+// };
+
 // Form element
 const registerForm = document.getElementById('registerForm');
 
 registerForm.addEventListener('submit', function (event) {
 	event.preventDefault();
-	// form data API
-	const data = new FormData(event.target);
 
-	let username = data.get('username');
-	let password = data.get('password');
-	let name = data.get('name');
-	let lastname = data.get('lastname');
-	let email = data.get('email');
-	let city = data.get('city');
+	let newUser = new User();
 
-	const newUser = new User(
-		username,
-		password,
-		name,
-		lastname,
-		email,
-		city
-	);
+	newUser.username = inputRegisterUsername.value;
+	newUser.password = inputRegisterPassword.value;
+	newUser.name = inputRegisterName.value;
+	newUser.lastname = inputRegisterLastname.value;
+	newUser.email = inputRegisterEmail.value;
+	newUser.city = inputCity.value;
 
-	window.localStorage.setItem('usersInfo', JSON.stringify(newUser));
+	usersInfo.push(newUser);
+
+	const userDataToStorage = JSON.stringify(usersInfo);
+
+	localStorage.setItem('usersInfo', userDataToStorage);
 
 	// Notificacion del modal popup
-	let registrationSuccessfulMessage = `Felicitaciones ${username} su registro fue satisfactorio. \n \n Aguarde y sera redireccionado.`;
+	let registrationSuccessfulMessage = `Felicitaciones ${newUser.username} su registro fue satisfactorio. \n \n Aguarde y sera redireccionado.`;
 	modalText.innerText = registrationSuccessfulMessage;
 
 	// jquerry for toggling modal
 	// eslint-disable-next-line no-undef
 	$('#registrationModal').modal('toggle');
 
-	// Busqueda de items con la clase valido en el form
 	const validItemsClassSelect =
 		registerForm.querySelectorAll('.is-valid');
-	//If true se le remueve la clase => se reincia el form
-	validItemsClassSelect.forEach(function (item) {
+
+	validItemsClassSelect.forEach((item) => {
 		item.classList.remove('is-valid');
 	});
 
 	// Reset form values
 	registerForm.reset();
-
-	// Submit button reset
 	registerSubmitButton.classList.add('disabled');
-	setTimeout("location.href = '../pages/login.html';", 3500);
+	setTimeout("location.href = '../pages/login.html';", 3200);
 });
