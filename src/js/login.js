@@ -45,10 +45,7 @@ submitLoginForm.addEventListener('submit', function (event) {
 		let successfulLogIn = 'El ingreso fue exitoso';
 		modalText.innerHTML = successfulLogIn;
 		$('#loginModal').modal('toggle');
-		setTimeout(
-			"location.href = '../pages/functionality.html';",
-			3500
-		);
+		setTimeout("location.href = '../pages/quotes.html';", 3500);
 	} else {
 		let WrongLogIn = 'Algo salio mal \n Intente de nuevo';
 		modalText.innerHTML = WrongLogIn;

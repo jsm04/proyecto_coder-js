@@ -1,5 +1,3 @@
-// import { faker } from '@faker-js/faker';
-
 $(document).ready(function () {
 	// jQuery methods go here...
 	$('body').vegas({
@@ -189,29 +187,6 @@ class User {
 
 const usersInfo = [];
 
-// faker js
-// const randomUsername = faker.internet.userName();
-// const randomPassword = faker.random.alphaNumeric(7);
-// const randomName = faker.name.findName();
-// const randomLastname = faker.name.lastName();
-// const randomEmail = faker.internet.email();
-// const randomCity = faker.address.city();
-
-// const generateRandomUsers = (userQuantity) => {
-// 	let result = [];
-// 	for (let i = 0; i < userQuantity; i++) {
-// 		let randomUser = new User();
-// 		randomUser.username = randomUsername;
-// 		randomUser.password = randomPassword;
-// 		randomUser.name = randomName;
-// 		randomUser.lastname = randomLastname;
-// 		randomUser.email = randomEmail;
-// 		randomUser.city = randomCity;
-// 		result.push(randomUser);
-// 	}
-// 	return usersInfo.concat(result);
-// };
-
 // Form element
 const registerForm = document.getElementById('registerForm');
 
@@ -251,5 +226,7 @@ registerForm.addEventListener('submit', function (event) {
 	// Reset form values
 	registerForm.reset();
 	registerSubmitButton.classList.add('disabled');
+
+	// 
 	setTimeout("location.href = '../pages/login.html';", 3200);
 });
