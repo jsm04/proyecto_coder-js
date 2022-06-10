@@ -1,22 +1,23 @@
 {
-  "name": "proyecto_coder",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "watch:scss": "sass --watch src/scss:src/css",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bootstrap": "^5.1.3",
-    "sass": "^1.50.0"
-  },
-  "devDependencies": {
-    "@faker-js/faker": "^6.2.0",
-    "eslint": "^8.13.0",
-    "vegas": "^2.5.4"
-  }
+	"name": "proyecto_coder",
+	"version": "1.0.0",
+	"description": "",
+	"main": "src/app.js",
+	"scripts": {
+		"watch:scss": "sass --watch src/scss:src/css",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"bootstrap": "^5.1.3",
+		"sass": "^1.50.0"
+	},
+	"devDependencies": {
+		"@faker-js/faker": "^6.2.0",
+		"eslint": "^8.13.0",
+		"vegas": "^2.5.4"
+	},
+	"type": "module"
 }

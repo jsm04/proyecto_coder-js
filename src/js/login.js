@@ -15,29 +15,20 @@ $(document).ready(function () {
 	});
 });
 
-/* eslint-disable no-undef */
-// login visual validation
-
 const usersInfo = window.localStorage.getItem('usersInfo');
+
 const retrievedUsersInfo = JSON.parse(usersInfo);
+
 const emailInput = document.getElementById('inputEmailLogin');
 
 const inputEmail = document.getElementById('inputEmailLogin');
-inputEmail.addEventListener('keyup', function () {
-	if (retrievedUsersInfo[0].email === inputEmail.value) {
-		emailInput.classList.add('is-valid');
-		emailInput.classList.remove('is-invalid');
-	} else {
-		emailInput.classList.remove('is-valid');
-		emailInput.classList.add('is-invalid');
-	}
-});
 
 const submitLoginForm = document.getElementById('loginForm');
 submitLoginForm.addEventListener('submit', function (event) {
 	event.preventDefault();
 	const inputPassword = document.getElementById('inputPassword');
 	const modalText = document.getElementById('modalText');
+
 	if (
 		retrievedUsersInfo[0].email === inputEmail.value &&
 		retrievedUsersInfo[0].password === inputPassword.value

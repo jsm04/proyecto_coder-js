@@ -227,6 +227,6 @@ registerForm.addEventListener('submit', function (event) {
 	registerForm.reset();
 	registerSubmitButton.classList.add('disabled');
 
-	// 
+	//
 	setTimeout("location.href = '../pages/login.html';", 3200);
 });
