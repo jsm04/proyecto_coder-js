@@ -1,3 +1,37 @@
+const inputRegisterName = document.getElementById('registrationName');
+const inputRegisterLastname = document.getElementById(
+	'registrationLastname'
+);
+const inputRegisterEmail = document.getElementById(
+	'registrationEmail'
+);
+const inputRegisterCountry = document.getElementById(
+	'registrationCountry'
+);
+const inputRegisterPassword = document.getElementById(
+	'registrationPassword'
+);
+const inputRegisterUsername = document.getElementById(
+	'registerUsername'
+);
+const inputRegisterTerms = document.getElementById('terms');
+const registerSubmitButton =
+	document.getElementById('registerSubmit');
+const registerForm = document.getElementById('registerForm');
+const modalText = document.getElementById('modalText');
+const usersInfo = [];
+
+class User {
+	constructor(username, password, name, lastname, email) {
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.lastname = lastname;
+		this.email = email;
+	}
+}
+
+// libreria con jquery y vegas
 $(document).ready(function () {
 	// jQuery methods go here...
 	$('body').vegas({
@@ -13,220 +47,139 @@ $(document).ready(function () {
 			},
 		],
 	});
-});
 
-// Validate Name Registration
-const inputRegisterName = document.getElementById('registrationName');
+	// Valida los campos del input con una ayuda visual
+	inputRegisterName.addEventListener('input', function () {
+		let input = document.getElementById('registrationName');
+		let regex = /^[a-z ,.'-]+$/i;
 
-inputRegisterName.addEventListener('input', function () {
-	let input = document.getElementById('registrationName');
-	let regex = /^[a-z ,.'-]+$/i;
-
-	if (input.value.match(regex)) {
-		input.classList.add('is-valid');
-		input.classList.remove('is-invalid');
-	} else {
-		input.classList.remove('is-valid');
-		input.classList.add('is-invalid');
-	}
-});
-
-// Validate LastName Registration
-const inputRegisterLastname = document.getElementById(
-	'registrationLastname'
-);
-
-inputRegisterLastname.addEventListener('input', function () {
-	let input = document.getElementById('registrationLastname');
-	let regex = /^[a-z ,.'-]+$/i;
-
-	if (input.value.match(regex)) {
-		input.classList.add('is-valid');
-		input.classList.remove('is-invalid');
-	} else {
-		input.classList.remove('is-valid');
-		input.classList.add('is-invalid');
-	}
-});
-
-// Validate Email Registration
-const inputRegisterEmail = document.getElementById(
-	'registrationEmail'
-);
-
-inputRegisterEmail.addEventListener('input', function () {
-	const input = document.getElementById('registrationEmail');
-	let regex =
-		/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-	if (input.value.match(regex)) {
-		input.classList.add('is-valid');
-		input.classList.remove('is-invalid');
-	} else {
-		input.classList.remove('is-valid');
-		input.classList.add('is-invalid');
-	}
-});
-
-// Validate Country Registration
-const inputRegisterCountry = document.getElementById(
-	'registrationCountry'
-);
-
-inputRegisterCountry.addEventListener('input', function () {
-	const input = document.getElementById('registrationCountry');
-	if (input.value === 'disabled') {
-		input.classList.remove('is-valid');
-		input.classList.add('is-invalid');
-	} else {
-		input.classList.add('is-valid');
-		input.classList.remove('is-invalid');
-	}
-});
-
-// Validate Password Registration
-const inputRegisterPassword = document.getElementById(
-	'registrationPassword'
-);
-inputRegisterPassword.addEventListener('input', function () {
-	const input = document.getElementById('registrationPassword');
-	// minimo 8 caracteres, una letra y un numero
-	let regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-
-	if (input.value.match(regex)) {
-		input.classList.add('is-valid');
-		input.classList.remove('is-invalid');
-	} else {
-		input.classList.remove('is-valid');
-		input.classList.add('is-invalid');
-	}
-});
-
-// Validate Password Registration
-const inputRegisterUsername = document.getElementById(
-	'registerUsername'
-);
-inputRegisterUsername.addEventListener('input', function () {
-	const input = document.getElementById('registerUsername');
-	// minimo 8 caracteres, una letra y un numero
-	let regex = /^[A-Za-z][A-Za-z0-9_]{7,29}$/;
-	if (input.value.match(regex)) {
-		input.classList.add('is-valid');
-		input.classList.remove('is-invalid');
-	} else {
-		input.classList.remove('is-valid');
-		input.classList.add('is-invalid');
-	}
-});
-
-// Validate Terms Registration
-const inputRegisterTerms = document.getElementById('terms');
-inputRegisterTerms.addEventListener('input', function () {
-	const input = document.getElementById('terms');
-	if (this.checked) {
-		input.classList.add('is-valid');
-		input.classList.remove('is-invalid');
-	} else {
-		input.classList.remove('is-valid');
-		input.classList.add('is-invalid');
-	}
-});
-
-const inputCity = document.getElementById('registerCity');
-
-// array de ciudades validas para el input ciudades
-const validCities = [
-	'Buenos Aires',
-	'Santiago de Chile',
-	'Montevideo',
-	'Brasilia',
-];
-
-// loop que busca si la ciudad esta disponible
-inputCity.addEventListener('input', function () {
-	for (let cities of validCities) {
-		if (inputCity.value === cities) {
-			inputCity.classList.add('is-valid');
-			inputCity.classList.remove('is-invalid');
-			break;
+		if (input.value.match(regex)) {
+			input.classList.add('is-valid');
+			input.classList.remove('is-invalid');
 		} else {
-			inputCity.classList.add('is-invalid');
-			inputCity.classList.remove('is-valid');
+			input.classList.remove('is-valid');
+			input.classList.add('is-invalid');
 		}
-	}
-	if (inputCity.value === '') {
-		inputCity.classList.remove('is-invalid');
-		inputCity.classList.remove('is-valid');
-	}
-});
-
-// Desactiva el boton de submit si no esta el checked de terminos y condiciones
-const registerSubmitButton =
-	document.getElementById('registerSubmit');
-
-document.addEventListener('change', function () {
-	if (document.getElementById('terms').checked) {
-		registerSubmitButton.classList.remove('disabled');
-	} else {
-		registerSubmitButton.classList.add('disabled');
-	}
-});
-
-const modalText = document.getElementById('modalText');
-
-class User {
-	constructor(username, password, name, lastname, email, city) {
-		this.username = username;
-		this.password = password;
-		this.name = name;
-		this.lastname = lastname;
-		this.email = email;
-		this.city = city;
-	}
-}
-
-const usersInfo = [];
-
-// Form element
-const registerForm = document.getElementById('registerForm');
-
-registerForm.addEventListener('submit', function (event) {
-	event.preventDefault();
-
-	let newUser = new User();
-
-	newUser.username = inputRegisterUsername.value;
-	newUser.password = inputRegisterPassword.value;
-	newUser.name = inputRegisterName.value;
-	newUser.lastname = inputRegisterLastname.value;
-	newUser.email = inputRegisterEmail.value;
-	newUser.city = inputCity.value;
-
-	usersInfo.push(newUser);
-
-	const userDataToStorage = JSON.stringify(usersInfo);
-
-	localStorage.setItem('usersInfo', userDataToStorage);
-
-	// Notificacion del modal popup
-	let registrationSuccessfulMessage = `Felicitaciones ${newUser.username} su registro fue satisfactorio. \n \n Aguarde y sera redireccionado.`;
-	modalText.innerText = registrationSuccessfulMessage;
-
-	// jquerry for toggling modal
-	// eslint-disable-next-line no-undef
-	$('#registrationModal').modal('toggle');
-
-	const validItemsClassSelect =
-		registerForm.querySelectorAll('.is-valid');
-
-	validItemsClassSelect.forEach((item) => {
-		item.classList.remove('is-valid');
 	});
 
-	// Reset form values
-	registerForm.reset();
-	registerSubmitButton.classList.add('disabled');
+	inputRegisterLastname.addEventListener('input', function () {
+		let input = document.getElementById('registrationLastname');
+		let regex = /^[a-z ,.'-]+$/i;
 
-	//
-	setTimeout("location.href = '../pages/login.html';", 3200);
+		if (input.value.match(regex)) {
+			input.classList.add('is-valid');
+			input.classList.remove('is-invalid');
+		} else {
+			input.classList.remove('is-valid');
+			input.classList.add('is-invalid');
+		}
+	});
+
+	inputRegisterEmail.addEventListener('input', function () {
+		const input = document.getElementById('registrationEmail');
+		let regex =
+			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+		if (input.value.match(regex)) {
+			input.classList.add('is-valid');
+			input.classList.remove('is-invalid');
+		} else {
+			input.classList.remove('is-valid');
+			input.classList.add('is-invalid');
+		}
+	});
+
+	inputRegisterCountry.addEventListener('input', function () {
+		const input = document.getElementById('registrationCountry');
+		if (input.value === 'disabled') {
+			input.classList.remove('is-valid');
+			input.classList.add('is-invalid');
+		} else {
+			input.classList.add('is-valid');
+			input.classList.remove('is-invalid');
+		}
+	});
+
+	inputRegisterPassword.addEventListener('input', function () {
+		const input = document.getElementById('registrationPassword');
+		// minimo 8 caracteres, una letra y un numero
+		let regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+		if (input.value.match(regex)) {
+			input.classList.add('is-valid');
+			input.classList.remove('is-invalid');
+		} else {
+			input.classList.remove('is-valid');
+			input.classList.add('is-invalid');
+		}
+	});
+
+	inputRegisterUsername.addEventListener('input', function () {
+		const input = document.getElementById('registerUsername');
+		// minimo 8 caracteres, una letra y un numero
+		let regex = /^[A-Za-z][A-Za-z0-9_]{7,29}$/;
+		if (input.value.match(regex)) {
+			input.classList.add('is-valid');
+			input.classList.remove('is-invalid');
+		} else {
+			input.classList.remove('is-valid');
+			input.classList.add('is-invalid');
+		}
+	});
+
+	inputRegisterTerms.addEventListener('input', function () {
+		const input = document.getElementById('terms');
+		if (this.checked) {
+			input.classList.add('is-valid');
+			input.classList.remove('is-invalid');
+		} else {
+			input.classList.remove('is-valid');
+			input.classList.add('is-invalid');
+		}
+	});
+
+	// Desactiva el boton de submit si no esta el checked de terminos y condiciones
+	document.addEventListener('change', function () {
+		if (document.getElementById('terms').checked) {
+			registerSubmitButton.classList.remove('disabled');
+		} else {
+			registerSubmitButton.classList.add('disabled');
+		}
+	});
+
+	const resetRegisterFormAndModal = (user) => {
+		const validItemsClassSelect =
+			registerForm.querySelectorAll('.is-valid');
+
+		validItemsClassSelect.forEach((item) => {
+			item.classList.remove('is-valid');
+		});
+
+		registerSubmitButton.classList.add('disabled');
+
+		modalText.innerText = `Felicitaciones ${user.username} su registro fue satisfactorio. 
+	\n \n Aguarde y sera redireccionado.`;
+
+		$('#registrationModal').modal('toggle');
+	};
+
+	// register form login
+	registerForm.addEventListener('submit', function (event) {
+		const user = new User();
+		event.preventDefault();
+		user.username = inputRegisterUsername.value;
+		user.password = inputRegisterPassword.value;
+		user.name = inputRegisterName.value;
+		user.lastname = inputRegisterLastname.value;
+		user.email = inputRegisterEmail.value;
+
+		usersInfo.push(user);
+		const userDataToStorage = JSON.stringify(usersInfo);
+		localStorage.setItem('usersInfo', userDataToStorage);
+
+		resetRegisterFormAndModal(user);
+
+		//Simula la redireccion en un login exitoso y redireccion
+		setTimeout("location.href = '../pages/login.html';", 3200);
+	});
 });

@@ -1,7 +1,8 @@
 @use './utils/colors' as *;
 
-$primary: $shade10;
+$primary: $shade20;
 $secondary: $earth-blue;
+$warning: $earth-yellow;
 
 // bootstrap
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
@@ -25,42 +26,6 @@ $secondary: $earth-blue;
 	margin: 0 auto;
 }
 
-// calendar
-
-.calendar {
-	margin: auto;
-
-	.calendar-title {
-		text-align: center;
-	}
-
-	.day {
-		@extend .fs-4;
-	}
-	.day:nth-child(2n) {
-		background-color: rgba(138, 138, 138, 0.318);
-	}
-
-	.calendar-ol {
-		text-transform: capitalize;
-		list-style-type: none;
-		display: grid;
-		grid-template-columns: repeat(7, 1fr);
-
-		:nth-child(8) {
-			grid-column-start: 5;
-		}
-
-		li {
-			@extend .p-3;
-			text-align: center;
-			border-radius: 10px;
-		}
-
-		.num:hover {
-			background-color: $secondary;
-			border-radius: 5px;
-			cursor: pointer;
-		}
-	}
+.favorite-selection {
+	background-color: lightyellow;
 }
